@@ -5,7 +5,7 @@ cam = cv2.VideoCapture(0)
 kernelOpen = np.ones((5, 5))
 kernelClose = np.ones((20, 20))
 
-font = cv2.cv.InitFont(cv2.cv.CV_FONT_HERSHEY_SIMPLEX, 2, 0.5, 0, 3, 1)
+font = cv2.FONT_HERSHEY_SIMPLEX
 
 while (cam.isOpened()):
 
@@ -29,7 +29,7 @@ while (cam.isOpened()):
         for i in range(len(conts)):
             x, y, w, h = cv2.boundingRect(conts[i])
             cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 2)
-            cv2.cv.PutText(cv2.cv.fromarray(img), str(i + 1), (x, y + h), font, (0, 255, 255))
+            cv2.putText(img,"Cat",(x,y-10),font,0.55,(0,255,0),1)
         cv2.imshow('maskClose', maskClose)
         cv2.imshow('maskOpen', maskOpen)
         cv2.imshow('mask', mask)
